@@ -17,8 +17,9 @@
             </div>
             <hr class="separator"/>
             <div id="result-container" class="container">
-                <div class="generated-password">
-                    <p id="password"></p>
+                <div class="generated-password tooltip" onClick="copyPassword()">
+                    <span class="tooltip-text" id="tooltip-text">Click to copy</span>
+                    <p id="password" ></p>
                 </div>
             </div>
         </div>

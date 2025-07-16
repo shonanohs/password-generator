@@ -4,8 +4,10 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 "/"];
 
 let passwordLength = 15;
+let tooltipText = document.getElementById("tooltip-text");
 
 function generatePassword() {
+    tooltipText.innerText = "Click to copy";
     let password = "";
     for (let i = 0; i < passwordLength; i++) {
         const randIdx = Math.floor(Math.random() * characters.length);
@@ -17,7 +19,23 @@ function generatePassword() {
 function displayPassword(password) {
     let passwordElement = document.getElementById("password");
     passwordElement.innerText = password;
-    console.log(password);
 }
 
+function copyPassword() {
+  const passwordEl = document.getElementById("password");
+  const passwordText = passwordEl.textContent;
+
+  if (!passwordText) return;
+
+  navigator.clipboard.writeText(passwordText)
+    .then(() => {
+      tooltipText.innerText = "Password copied!";
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
+}
+
+
 window.generatePassword = generatePassword;
+window.copyPassword = copyPassword;

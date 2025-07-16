@@ -45,6 +45,11 @@ body {
   font-family: "Karla", sans-serif;
   text-align: center;
   font-weight: bold;
+   min-height: 40px;
+}
+
+.generated-password:hover {
+  cursor: pointer;
 }
 
 .input-btn {
@@ -65,4 +70,29 @@ body {
 .separator {
   width: 90%;
   border: 1px solid #263649;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 150px;
+  background-color:#263649;
+  opacity: 80%;
+  color: #fcfbf9;
+  text-align: center;
+  padding: 10px 3px 10px 3px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  left: 50%;
+  margin-left: 130px;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
 }
