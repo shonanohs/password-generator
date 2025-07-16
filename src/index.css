@@ -12,8 +12,13 @@ body {
   color: #fcfbf9;
 }
 
-#input-container {
-  margin: 50px 0 40px 100px;
+#input-container, #result-container {
+  margin: 40px 0 40px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  
 }
 
 #title-text {
@@ -32,6 +37,13 @@ body {
   color: #4ede87;
 }
 
+.generated-password {
+  background-color: #263549;
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .input-btn {
   background-color: #12bd85;
   border: none;
@@ -48,6 +60,6 @@ body {
 }
 
 .separator {
-  width: 80%;
+  width: 90%;
   border: 1px solid #263649;
 }
