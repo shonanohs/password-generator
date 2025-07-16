@@ -3,10 +3,17 @@ body {
   background-color: #1f2a37;
 }
 
-#info-container {
+.container {
   margin: 100px 0 50px 100px;
+}
+
+#info-container {
   font-family: "Karla", sans-serif;
   color: #fcfbf9;
+}
+
+#input-container {
+  margin: 50px 0 40px 100px;
 }
 
 #title-text {
@@ -23,4 +30,24 @@ body {
 
 #text-highlight {
   color: #4ede87;
+}
+
+.input-btn {
+  background-color: #12bd85;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  color: #fcfbf9;
+  font-family: "Karla", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+.input-btn:hover {
+  background-color: #0e8e64;
+  cursor: pointer;
+}
+
+.separator {
+  width: 80%;
+  border: 1px solid #263649;
 }
