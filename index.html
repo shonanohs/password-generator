@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="src/index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     </head>
     <body>
         <div>
             <div id="info-container">
-                <h1>Generate a<br>random password</h1>
-                <h3>Never use an insecure password again.</h3>
+                <h1 id="title-text">Generate a<br><span id="text-highlight">random password</span></h1>
+                <h3 id="slogan-text">Never use an insecure password again.</h3>
             </div>
             <div id="input-container">
-                <button>Generate passwords</button>
+                <button class="input-btn">Generate passwords</button>
             </div>
-            <hr/>
+            <hr class="separator"/>
             <div id="result-container">
                 <div class="generated-password">
                     <p id="password1"></p>
