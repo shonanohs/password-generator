@@ -102,7 +102,7 @@ function decreaseLength() {
 
     if (passwordLength <= 5) {
         minusButton.disabled = true;
-        tooltipTextMinus.innerText = "Passwords must be at least 5 characters";
+        tooltipTextMinus.innerText = "Passwords must have at least 5 characters";
     } else {
         minusButton.disabled = false;
         tooltipTextMinus.innerText = "";

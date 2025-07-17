@@ -15,6 +15,12 @@
                     <div id="input-container" class="container">
                         <button class="input-btn" onClick="generatePassword()">Generate password</button>
                     </div>
+                    <div id="result-container" class="container">
+                        <div class="generated-password tooltip tooltip-copy" onClick="copyPassword()">
+                            <span class="tooltip-text" id="tooltip-text-copy"></span>
+                            <p id="password" ></p>
+                        </div>
+                    </div>
                 </div>
                 <div id="options-container" class="container">
                     <div id="advanced-options">
@@ -58,12 +64,6 @@
                 </div>
             </div>
             <hr class="separator"/>
-            <div id="result-container" class="container">
-                <div class="generated-password tooltip tooltip-copy" onClick="copyPassword()">
-                    <span class="tooltip-text" id="tooltip-text-copy"></span>
-                    <p id="password" ></p>
-                </div>
-            </div>
         </div>
         <script type="module" src="src/index.js"></script>
     </body>
