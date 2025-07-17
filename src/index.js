@@ -21,6 +21,7 @@ document.getElementById("plus-btn").addEventListener("click", () => adjustLength
 document.getElementById("minus-btn").addEventListener("click", () => adjustLength(-1));
 document.getElementById("copy-password").addEventListener("click", () => copyPassword());
 document.getElementById("generate-btn").addEventListener("click", () => generatePassword());
+document.getElementById('mode-toggle').addEventListener('change', () => toggleLightMode());
 
 // Generate random password according to checkboxes selected
 function generatePassword() {
@@ -109,4 +110,10 @@ function adjustLength(direction) {
         plusButton.disabled = false;
         tooltipTextPlus.innerText = "";
     }
+
+}
+
+// Toggle between light and dark mode
+function toggleLightMode() {
+    document.body.classList.toggle('light-mode');
 }

@@ -1,10 +1,31 @@
+/* Dark mode (default) */
 :root {
-  --light-green: #4ede87;
-  --dark-green: #12bd85;
-  --white: #fcfbf9;
-  --dark-blue: #1f2a37;
-  --lighter-blue: #263649;
-  --grey: #ccc;
+  --color-bg-primary: #1f2a37;
+  --color-bg-secondary: #263649;
+  --color-text-primary: #fcfbf9;
+  --color-text-secondary: #ccc;
+  --color-accent: #4ede87;
+  --color-accent-hover: #12bd85;
+  --color-tooltip-bg: #263649;
+  --color-box-bg: #304158;
+  --color-box-text: #12bd85;
+  --color-disabled: #888;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+/* Light mode */
+body.light-mode {
+  --color-bg-primary: #f9f9f9;
+  --color-bg-secondary: #e6e6e6;
+  --color-text-primary: #1f2a37;
+  --color-text-secondary: #666;
+  --color-accent: #2f855a;
+  --color-accent-hover: #22543d;
+  --color-tooltip-bg: #f0f0f0;
+  --color-box-bg: #e0e0e0;
+  --color-box-text: #22543d;
+  --color-disabled: #aaa;
 }
 
 * {
@@ -15,11 +36,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Karla", sans-serif;
-  background-color: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
-/* Main layout */
+/* Layout */
 #flex-container {
   display: flex;
   flex-direction: column;
@@ -27,7 +48,6 @@ body {
   padding: 60px 20px 30px 20px;
 }
 
-/* Section Containers */
 .container {
   width: 100%;
   max-width: 700px;
@@ -35,7 +55,7 @@ body {
   text-align: center;
 }
 
-/* Title and slogan */
+/* Titles */
 #title-text {
   font-weight: 800;
   font-size: 40px;
@@ -44,7 +64,7 @@ body {
 }
 
 #text-highlight {
-  color: var(--light-green);
+  color: var(--color-accent);
 }
 
 #slogan-text {
@@ -53,37 +73,34 @@ body {
   font-size: 18px;
 }
 
-/* Buttons and Result */
-#input-container {
-  margin-bottom: 30px;
-}
-
+/* Buttons */
 .input-btn {
-  background-color: var(--light-green);
+  background-color: var(--color-accent);
   border: none;
   border-radius: 5px;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: bold;
-  color: var(--dark-blue);
+  color: var(--color-bg-primary);
   transition: background-color 0.2s ease;
 }
 
 .input-btn:hover {
-  background-color: var(--dark-green);
+  background-color: var(--color-accent-hover);
   cursor: pointer;
 }
 
 #generate-btn {
-  color: var(--white);
+  color: var(--color-white);
 }
 
+/* Result display */
 .generated-password {
-  background-color: var(--lighter-blue);
+  background-color: var(--color-box-bg);
   border-radius: 10px;
   min-height: 50px;
   padding: 12px;
-  color: var(--dark-green);
+  color: var(--color-box-text);
   font-weight: bold;
   text-align: center;
   width: 100%;
@@ -93,10 +110,10 @@ body {
 
 .generated-password:hover {
   cursor: pointer;
-  background-color: #304158;
+  background-color: var(--color-bg-secondary);
 }
 
-/* Tooltip */
+/* Tooltips */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -107,9 +124,9 @@ body {
   font-size: 14px;
   width: max-content;
   max-width: 300px;
-  background-color: var(--lighter-blue);
+  background-color: var(--color-tooltip-bg);
   opacity: 0.9;
-  color: var(--white);
+  color: var(--color-text-primary);
   text-align: center;
   padding: 8px 10px;
   border-radius: 6px;
@@ -130,7 +147,7 @@ body {
   visibility: visible;
 }
 
-/* Tooltip overrides for + / - */
+/* Tooltip position for + / - */
 .tooltip-plus .tooltip-text,
 .tooltip-minus .tooltip-text {
   top: -35px;
@@ -142,7 +159,7 @@ body {
 #advanced-options {
   margin: 0 auto;
   padding: 20px;
-  border: 2px solid var(--dark-green);
+  border: 2px solid var(--color-accent-hover);
   border-radius: 10px;
   max-width: 400px;
   display: flex;
@@ -159,7 +176,7 @@ body {
   cursor: pointer;
   font-size: 18px;
   text-align: left;
-  color: var(--dark-green);
+  color: var(--color-box-text);
   user-select: none;
 }
 
@@ -177,16 +194,16 @@ body {
   left: 0;
   height: 22px;
   width: 22px;
-  background-color: var(--white);
+  background-color: var(--color-white);
   border-radius: 3px;
 }
 
 .label-container:hover input ~ .checkmark {
-  background-color: var(--grey);
+  background-color: var(--color-disabled);
 }
 
 .label-container input:checked ~ .checkmark {
-  background-color: var(--light-green);
+  background-color: var(--color-accent);
 }
 
 .checkmark:after {
@@ -204,37 +221,87 @@ body {
   top: 3px;
   width: 5px;
   height: 10px;
-  border: solid var(--white);
+  border: solid var(--color-white);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-/* Password length section */
+/* Password length control */
 #plus-minus-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
   font-size: 24px;
-  color: var(--light-green);
+  color: var(--color-accent);
 }
 
 .plus-minus-btn {
   padding: 8px 16px;
   font-size: 22px;
-  background-color: var(--light-green);
-  color: var(--white);
+  background-color: var(--color-accent);
+  color: var(--color-white);
   border: none;
   border-radius: 5px;
   font-weight: bold;
 }
 
 .plus-minus-btn:hover:not(:disabled) {
-  background-color: var(--dark-green);
+  background-color: var(--color-accent-hover);
   cursor: pointer;
 }
 
 .plus-minus-btn:disabled {
-  background-color: var(--grey);
+  background-color: var(--color-disabled);
   cursor: not-allowed;
+}
+
+/* Toggle Switch */
+#toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--color-disabled);
+  border-radius: 24px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--color-accent);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(26px);
 }
