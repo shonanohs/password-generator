@@ -1,70 +1,107 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Password Generator</title>
+
+        <!-- Fonts & Styles -->
         <link rel="stylesheet" href="src/index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     </head>
+
     <body>
-        <div>
-            <div id="flex-container">
-                <div id="info-container" class="container">
-                    <h1 id="title-text">Generate a<br><span id="text-highlight">random password</span></h1>
-                    <h3 id="slogan-text">Never use an insecure password again.</h3>
-                    <div id="input-container" class="container">
-                        <button class="input-btn" onClick="generatePassword()">Generate password</button>
-                    </div>
-                    <div id="result-container" class="container">
-                        <div class="generated-password tooltip tooltip-copy" onClick="copyPassword()">
-                            <span class="tooltip-text" id="tooltip-text-copy"></span>
-                            <p id="password" ></p>
-                        </div>
+        <main id="flex-container">
+            <!-- Info, Button & Generated Password -->
+            <section id="info-container" class="container">
+                <h1 id="title-text">
+                    Generate a<br/><span id="text-highlight">random password</span>
+                </h1>
+                <h2 id="slogan-text">Never use an insecure password again.</h2>
+
+                <div id="input-container" class="container">
+                    <button class="input-btn" onClick="generatePassword()">Generate password</button>
+                </div>
+
+                <div id="result-container" class="container">
+                    <div 
+                        class="generated-password tooltip tooltip-copy" 
+                        onClick="copyPassword()"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Copy password"
+                    >
+                        <span class="tooltip-text" id="tooltip-text-copy"></span>
+                        <p id="password" ></p>
                     </div>
                 </div>
-                <div id="options-container" class="container">
-                    <div id="advanced-options">
-                        <div>
-                            <h2 id="include-heading">Include:</h2>
-                                <label class="label-container">lowercase
-                                    <input type="checkbox" checked="checked" id="lower">
-                                    <span class="checkmark"></span>
-                                </label>
+            </section>
 
-                                <label class="label-container">uppercase
-                                    <input type="checkbox" checked="checked" id="upper">
-                                    <span class="checkmark"></span>
-                                </label>
+            <!-- Password Options -->
+            <section id="options-container" class="container">
+                <div id="advanced-options">
+                    <fieldset>
+                        <legend id="include-heading">Include:</legend>
 
-                                <label class="label-container">numbers
-                                    <input type="checkbox" checked="checked" id="numbers">
-                                    <span class="checkmark"></span>
-                                </label>
+                        <label for="lower" class="label-container">lowercase
+                            <input type="checkbox" id="lower" checked>
+                            <span class="checkmark"></span>
+                        </label>
 
-                                <label class="label-container">symbols
-                                    <input type="checkbox" checked="checked" id="symbols">
-                                    <span class="checkmark"></span>
-                                </label>
-                        </div>
-                        <div>
-                            <h2 id="length-heading">Password Length:</h2>
-                            <div id="plus-minus-container">
-                                <div class="tooltip tooltip-minus">
-                                    <button class="input-btn plus-minus-btn" id="minusButton" onClick="decreaseLength()">-</button> 
-                                    <span class="tooltip-text" id="tooltip-text-minus"></span>
-                                </div>
-                                <p id="password-length">15</p>
-                                <div class="tooltip tooltip-plus">
-                                    <button class="input-btn plus-minus-btn tooltip" id="plusButton" onClick="increaseLength()">+</button>    
-                                    <span class="tooltip-text" id="tooltip-text-plus"></span>
-                                </div>
+                        <label for="upper" class="label-container">uppercase
+                            <input type="checkbox" id="upper" checked>
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label for="numbers" class="label-container">numbers
+                            <input type="checkbox" id="numbers" checked>
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label for="symbols" class="label-container">symbols
+                            <input type="checkbox" id="symbols" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+
+                    <div>
+                        <h3 id="length-heading">Password Length:</h3>
+                        <div id="plus-minus-container">
+                            <div class="tooltip tooltip-minus">
+                                <button 
+                                    class="input-btn plus-minus-btn" 
+                                    id="minusButton" 
+                                    onClick="decreaseLength()"
+                                    aria-label="Decrease password length"
+                                >
+                                -
+                                </button> 
+                                <span class="tooltip-text" id="tooltip-text-minus"></span>
+                            </div>
+
+                            <p id="password-length" aria-live="polite">15</p>
+
+                            <div class="tooltip tooltip-plus">
+                                <button 
+                                    class="input-btn plus-minus-btn tooltip" 
+                                    id="plusButton" 
+                                    onClick="increaseLength()"
+                                    aria-label="Increase password length"
+                                >
+                                +
+                                </button>    
+                                <span class="tooltip-text" id="tooltip-text-plus"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="separator"/>
-        </div>
+            </section>
+        </main>
+
+        <hr class="separator"/>
+
         <script type="module" src="src/index.js"></script>
     </body>
 </html>

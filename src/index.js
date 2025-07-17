@@ -81,7 +81,7 @@ function increaseLength() {
 
     if (passwordLength >= 20) {
         plusButton.disabled = true;
-        tooltipTextPlus.innerText = "Passwords must not exceed 20 characters";
+        tooltipTextPlus.innerText = "Password must not exceed 20 characters";
     } else {
         plusButton.disabled = false;
         tooltipTextPlus.innerText = "";
@@ -102,7 +102,7 @@ function decreaseLength() {
 
     if (passwordLength <= 5) {
         minusButton.disabled = true;
-        tooltipTextMinus.innerText = "Passwords must have at least 5 characters";
+        tooltipTextMinus.innerText = "Password must have at least 5 characters";
     } else {
         minusButton.disabled = false;
         tooltipTextMinus.innerText = "";
