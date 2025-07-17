@@ -1,123 +1,102 @@
+:root {
+  --light-green: #4ede87;
+  --dark-green: #12bd85;
+  --white: #fcfbf9;
+  --dark-blue: #1f2a37;
+  --lighter-blue: #263649;
+  --grey: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background-color: #1f2a37;
-}
-
-.container {
-  margin: 100px 0 50px 100px;
-}
-
-#info-container {
+  padding: 0;
   font-family: "Karla", sans-serif;
-  color: #fcfbf9;
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
-#input-container {
-  margin: 40px 0 40px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 600px;
-}
-
-#result-container {
-  margin: 85px 0 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 600px;
-}
-
-#options-container {
-  margin: 40px 0 40px -120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 600px;
-}
-
-
+/* Main layout */
 #flex-container {
   display: flex;
-  align-items: start;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 30px 20px;
 }
 
-#advanced-options {
-  border: 2px solid #12bd85;
-  padding: 10px 20px 30px 30px;
-  margin: 30px 0 0 0;
-  width: 60%;
-  height: 50%;
-  max-width: 500px;
+/* Section Containers */
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-#include-heading {
-  font-family: "Karla", sans-serif;
-  color: #fcfbf9;
-}
-
-#length-heading {
-  font-family: "Karla", sans-serif;
-  color: #fcfbf9;
-}
-
+/* Title and slogan */
 #title-text {
   font-weight: 800;
   font-size: 40px;
-  margin: 0 0 20px 0;
-  line-height: 35px;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+#text-highlight {
+  color: var(--light-green);
 }
 
 #slogan-text {
   font-weight: 200;
-  margin: 0 0 0 0;
+  margin: 0 0 40px;
+  font-size: 18px;
 }
 
-#text-highlight {
-  color: #4ede87;
+/* Buttons and Result */
+#input-container {
+  margin-bottom: 30px;
 }
 
-.checkbox {
-  font-family: "Karla", sans-serif;
-  color: #4ede87;
+.input-btn {
+  background-color: var(--light-green);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  transition: background-color 0.2s ease;
+}
+
+.input-btn:hover {
+  background-color: var(--dark-green);
+  cursor: pointer;
+}
+
+#generate-btn {
+  color: var(--white);
 }
 
 .generated-password {
-  background-color: #263549;
-  width: 40%;
+  background-color: var(--lighter-blue);
   border-radius: 10px;
-  color: #12bd85;
-  font-family: "Karla", sans-serif;
-  text-align: center;
-  font-weight: bold;
   min-height: 50px;
+  padding: 12px;
+  color: var(--dark-green);
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  transition: background-color 0.2s ease;
 }
 
 .generated-password:hover {
   cursor: pointer;
+  background-color: #304158;
 }
 
-.input-btn {
-  background-color: #12bd85;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px 10px 20px;
-  color: #fcfbf9;
-  font-family: "Karla", sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.input-btn:hover {
-  background-color: #0e8e64;
-  cursor: pointer;
-}
-
-.separator {
-  width: 90%;
-  border: 1px solid #263649;
-}
-
+/* Tooltip */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -126,130 +105,136 @@ body {
 .tooltip .tooltip-text {
   visibility: hidden;
   font-size: 14px;
-  width: 150px;
-  background-color:#263649;
-  opacity: 80%;
-  color: #fcfbf9;
+  width: max-content;
+  max-width: 300px;
+  background-color: var(--lighter-blue);
+  opacity: 0.9;
+  color: var(--white);
   text-align: center;
-  padding: 10px 3px 10px 3px;
+  padding: 8px 10px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  top: 15%;
+  top: -40px;
   left: 50%;
-  margin-left: 130px;
-}
-
-.tooltip-plus .tooltip-text {
-  top: -10%;
-  left: 40%;
   transform: translateX(-50%);
-}
-
-.tooltip-minus .tooltip-text {
-  top: -10%;
-  left: 280%;
-  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .tooltip .tooltip-text:empty {
   display: none;
 }
 
-.tooltip:hover .tooltip-text:not(:empty) {
+.tooltip:hover .tooltip-text:not(:empty),
+.tooltip:focus-within .tooltip-text:not(:empty) {
   visibility: visible;
+}
+
+/* Tooltip overrides for + / - */
+.tooltip-plus .tooltip-text,
+.tooltip-minus .tooltip-text {
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Options section */
+#advanced-options {
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid var(--dark-green);
+  border-radius: 10px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
 .label-container {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin: 2px 0 10px 0;
+  margin: 10px 0;
   cursor: pointer;
-  font-size: 20px;
-  font-family: "Karla", sans-serif;
-  color: #12bd85;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  font-size: 18px;
+  text-align: left;
+  color: var(--dark-green);
   user-select: none;
 }
 
-/* Hide the browser's default checkbox */
-.container input {
+/* Hide native checkbox */
+.label-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
-/* Create a custom checkbox */
+/* Custom checkbox */
 .checkmark {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
+  height: 22px;
+  width: 22px;
+  background-color: var(--white);
+  border-radius: 3px;
 }
 
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+.label-container:hover input ~ .checkmark {
+  background-color: var(--grey);
 }
 
-.container input:checked ~ .checkmark {
-  background-color: #12bd85;
+.label-container input:checked ~ .checkmark {
+  background-color: var(--light-green);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.label-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
+.label-container .checkmark:after {
+  left: 7px;
+  top: 3px;
   width: 5px;
   height: 10px;
-  border: solid #fcfbf9;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
+/* Password length section */
 #plus-minus-container {
-  margin: -15px auto -10px -210px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;          
-  color: #12bd85;
-  font-family: "Karla", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
+  gap: 20px;
+  font-size: 24px;
+  color: var(--light-green);
 }
 
-
 .plus-minus-btn {
-  padding: 8px 15px;
+  padding: 8px 16px;
   font-size: 22px;
-  line-height: 1;
+  background-color: var(--light-green);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.plus-minus-btn:hover:not(:disabled) {
+  background-color: var(--dark-green);
+  cursor: pointer;
 }
 
 .plus-minus-btn:disabled {
-  padding: 8px 15px;
-  font-size: 22px;
-  line-height: 1;    
-  background-color: grey;
+  background-color: var(--grey);
+  cursor: not-allowed;
 }
