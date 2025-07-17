@@ -6,23 +6,33 @@ const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const symbols = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?","/"];
 
 let passwordLength = 15;
+const MIN_LENGTH = 5;
+const MAX_LENGTH = 20;
+
 const tooltipTextCopy = document.getElementById("tooltip-text-copy");
-const plusButton = document.getElementById("plusButton");
-const minusButton = document.getElementById("minusButton");
+const plusButton = document.getElementById("plus-btn");
+const minusButton = document.getElementById("minus-btn");
+const passwordEl = document.getElementById("password");
 const passwordLengthText = document.getElementById("password-length");
 const tooltipTextPlus = document.getElementById("tooltip-text-plus");
 const tooltipTextMinus = document.getElementById("tooltip-text-minus");
 
+document.getElementById("plus-btn").addEventListener("click", () => adjustLength(+1));
+document.getElementById("minus-btn").addEventListener("click", () => adjustLength(-1));
+document.getElementById("copy-password").addEventListener("click", () => copyPassword());
+document.getElementById("generate-btn").addEventListener("click", () => generatePassword());
+
+// Generate random password according to checkboxes selected
 function generatePassword() {
+    
+    // Reset character pool & tooltip text
+    let characters = [];
     tooltipTextCopy.innerText = "Click to copy";
 
     let lowerChecked = document.getElementById("lower").checked;
     let upperChecked = document.getElementById("upper").checked;
     let numberChecked = document.getElementById("numbers").checked;
     let symbolsChecked = document.getElementById("symbols").checked;
-
-    // Reset character pool
-    let characters = [];
 
     if (lowerChecked) {
         characters = characters.concat(lowerChars);
@@ -52,14 +62,13 @@ function generatePassword() {
     displayPassword(password);
 }
 
-
+// Display randomly generated password
 function displayPassword(password) {
-    let passwordElement = document.getElementById("password");
-    passwordElement.innerText = password;
+    passwordEl.innerText = password;
 }
 
+// Copy generated password to clipboard
 function copyPassword() {
-  const passwordEl = document.getElementById("password");
   const passwordText = passwordEl.textContent;
 
   if (!passwordText) return;
@@ -73,34 +82,18 @@ function copyPassword() {
     });
 }
 
-function increaseLength() {
-    if (passwordLength < 20) {
-        passwordLength += 1;
-        passwordLengthText.innerText = passwordLength;
-    }
+// Increase or decrease password length based on user input
+function adjustLength(direction) {
+    // Direction should be +1 (increase) or -1 (decrease)
+    const newLength = passwordLength + direction;
 
-    if (passwordLength >= 20) {
-        plusButton.disabled = true;
-        tooltipTextPlus.innerText = "Password must not exceed 20 characters";
-    } else {
-        plusButton.disabled = false;
-        tooltipTextPlus.innerText = "";
-    }
+    if (newLength < MIN_LENGTH || newLength > MAX_LENGTH) return;
 
-    if (passwordLength > 5) {
-        minusButton.disabled = false;
-        tooltipTextMinus.innerText = "";
-    }
-}
+    passwordLength = newLength;
+    passwordLengthText.innerText = passwordLength;
 
-
-function decreaseLength() {
-    if (passwordLength > 5) {
-        passwordLength -= 1;
-        passwordLengthText.innerText = passwordLength;
-    }
-
-    if (passwordLength <= 5) {
+    // Update tooltip + disable state for minus button
+    if (passwordLength <= MIN_LENGTH) {
         minusButton.disabled = true;
         tooltipTextMinus.innerText = "Password must have at least 5 characters";
     } else {
@@ -108,15 +101,12 @@ function decreaseLength() {
         tooltipTextMinus.innerText = "";
     }
 
-    if (passwordLength < 20) {
+    // Update tooltip + disable state for plus button
+    if (passwordLength >= MAX_LENGTH) {
+        plusButton.disabled = true;
+        tooltipTextPlus.innerText = "Password must not exceed 20 characters";
+    } else {
         plusButton.disabled = false;
         tooltipTextPlus.innerText = "";
     }
 }
-
-
-
-window.generatePassword = generatePassword;
-window.copyPassword = copyPassword;
-window.increaseLength = increaseLength;
-window.decreaseLength = decreaseLength;

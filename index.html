@@ -22,13 +22,13 @@
                 <h2 id="slogan-text">Never use an insecure password again.</h2>
 
                 <div id="input-container" class="container">
-                    <button class="input-btn" onClick="generatePassword()">Generate password</button>
+                    <button class="input-btn" id="generate-btn">Generate password</button>
                 </div>
 
                 <div id="result-container" class="container">
                     <div 
                         class="generated-password tooltip tooltip-copy" 
-                        onClick="copyPassword()"
+                        id="copy-password"
                         tabindex="0"
                         role="button"
                         aria-label="Copy password"
@@ -42,8 +42,8 @@
             <!-- Password Options -->
             <section id="options-container" class="container">
                 <div id="advanced-options">
-                    <fieldset>
-                        <legend id="include-heading">Include:</legend>
+                    <div>
+                        <h2 id="include-heading">Include:</h2>
 
                         <label for="lower" class="label-container">lowercase
                             <input type="checkbox" id="lower" checked>
@@ -64,7 +64,7 @@
                             <input type="checkbox" id="symbols" checked>
                             <span class="checkmark"></span>
                         </label>
-                    </fieldset>
+                    </div>
 
                     <div>
                         <h3 id="length-heading">Password Length:</h3>
@@ -72,8 +72,7 @@
                             <div class="tooltip tooltip-minus">
                                 <button 
                                     class="input-btn plus-minus-btn" 
-                                    id="minusButton" 
-                                    onClick="decreaseLength()"
+                                    id="minus-btn" 
                                     aria-label="Decrease password length"
                                 >
                                 -
@@ -86,8 +85,7 @@
                             <div class="tooltip tooltip-plus">
                                 <button 
                                     class="input-btn plus-minus-btn tooltip" 
-                                    id="plusButton" 
-                                    onClick="increaseLength()"
+                                    id="plus-btn" 
                                     aria-label="Increase password length"
                                 >
                                 +
