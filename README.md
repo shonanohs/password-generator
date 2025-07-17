@@ -22,6 +22,7 @@ A responsive, customisable password generator built with JavaScript, HTML, and C
 <img width="845" height="838" alt="image" src="https://github.com/user-attachments/assets/537b4b35-078c-4ad8-8f5a-2461cd51d6bb" />
 
 ### ☀️ Light Mode:
-<img width="846" height="837" alt="image" src="https://github.com/user-attachments/assets/378e0554-7e39-48c7-947f-198628402a1c" />
+<img width="845" height="840" alt="image" src="https://github.com/user-attachments/assets/f71d7300-b9eb-4bd8-bc56-5ed2ebe44ec2" />
+
 
 
