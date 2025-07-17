@@ -6,10 +6,15 @@ const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const symbols = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?","/"];
 
 let passwordLength = 15;
-let tooltipText = document.getElementById("tooltip-text");
+const tooltipTextCopy = document.getElementById("tooltip-text-copy");
+const plusButton = document.getElementById("plusButton");
+const minusButton = document.getElementById("minusButton");
+const passwordLengthText = document.getElementById("password-length");
+const tooltipTextPlus = document.getElementById("tooltip-text-plus");
+const tooltipTextMinus = document.getElementById("tooltip-text-minus");
 
 function generatePassword() {
-    tooltipText.innerText = "Click to copy";
+    tooltipTextCopy.innerText = "Click to copy";
 
     let lowerChecked = document.getElementById("lower").checked;
     let upperChecked = document.getElementById("upper").checked;
@@ -61,13 +66,57 @@ function copyPassword() {
 
   navigator.clipboard.writeText(passwordText)
     .then(() => {
-      tooltipText.innerText = "Password copied!";
+      tooltipTextCopy.innerText = "Password copied!";
     })
     .catch((err) => {
       console.error("Failed to copy: ", err);
     });
 }
 
+function increaseLength() {
+    if (passwordLength < 20) {
+        passwordLength += 1;
+        passwordLengthText.innerText = passwordLength;
+    }
+
+    if (passwordLength >= 20) {
+        plusButton.disabled = true;
+        tooltipTextPlus.innerText = "Passwords must not exceed 20 characters";
+    } else {
+        plusButton.disabled = false;
+        tooltipTextPlus.innerText = "";
+    }
+
+    if (passwordLength > 5) {
+        minusButton.disabled = false;
+        tooltipTextMinus.innerText = "";
+    }
+}
+
+
+function decreaseLength() {
+    if (passwordLength > 5) {
+        passwordLength -= 1;
+        passwordLengthText.innerText = passwordLength;
+    }
+
+    if (passwordLength <= 5) {
+        minusButton.disabled = true;
+        tooltipTextMinus.innerText = "Passwords must be at least 5 characters";
+    } else {
+        minusButton.disabled = false;
+        tooltipTextMinus.innerText = "";
+    }
+
+    if (passwordLength < 20) {
+        plusButton.disabled = false;
+        tooltipTextPlus.innerText = "";
+    }
+}
+
+
 
 window.generatePassword = generatePassword;
 window.copyPassword = copyPassword;
+window.increaseLength = increaseLength;
+window.decreaseLength = decreaseLength;

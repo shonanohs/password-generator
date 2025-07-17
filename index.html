@@ -43,9 +43,15 @@
                         <div>
                             <h2 id="length-heading">Password Length:</h2>
                             <div id="plus-minus-container">
-                                <button class="input-btn plus-minus-btn">-</button>
-                                <p>15</p>
-                                <button class="input-btn plus-minus-btn">+</button>
+                                <div class="tooltip tooltip-minus">
+                                    <button class="input-btn plus-minus-btn" id="minusButton" onClick="decreaseLength()">-</button> 
+                                    <span class="tooltip-text" id="tooltip-text-minus"></span>
+                                </div>
+                                <p id="password-length">15</p>
+                                <div class="tooltip tooltip-plus">
+                                    <button class="input-btn plus-minus-btn tooltip" id="plusButton" onClick="increaseLength()">+</button>    
+                                    <span class="tooltip-text" id="tooltip-text-plus"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,8 +59,8 @@
             </div>
             <hr class="separator"/>
             <div id="result-container" class="container">
-                <div class="generated-password tooltip" onClick="copyPassword()">
-                    <span class="tooltip-text" id="tooltip-text">Click to copy</span>
+                <div class="generated-password tooltip tooltip-copy" onClick="copyPassword()">
+                    <span class="tooltip-text" id="tooltip-text-copy">Click to copy</span>
                     <p id="password" ></p>
                 </div>
             </div>

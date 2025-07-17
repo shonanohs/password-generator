@@ -125,6 +125,7 @@ body {
 
 .tooltip .tooltip-text {
   visibility: hidden;
+  font-size: 14px;
   width: 150px;
   background-color:#263649;
   opacity: 80%;
@@ -139,7 +140,23 @@ body {
   margin-left: 130px;
 }
 
-.tooltip:hover .tooltip-text {
+.tooltip-plus .tooltip-text {
+  top: -10%;
+  left: 40%;
+  transform: translateX(-50%);
+}
+
+.tooltip-minus .tooltip-text {
+  top: -10%;
+  left: 280%;
+  transform: translateX(-50%);
+}
+
+.tooltip .tooltip-text:empty {
+  display: none;
+}
+
+.tooltip:hover .tooltip-text:not(:empty) {
   visibility: visible;
 }
 
@@ -212,18 +229,27 @@ body {
 }
 
 #plus-minus-container {
-  margin-top: -15px;
+  margin: -15px auto -10px -210px;
   display: flex;
-  justify-content: space-around;
-  max-width: 200px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;          
   color: #12bd85;
   font-family: "Karla", sans-serif;
   font-size: 25px;
   font-weight: 600;
 }
 
+
 .plus-minus-btn {
-  padding: 10px 15px 10px 15px;
-  margin: auto 0 auto 0;
+  padding: 8px 15px;
   font-size: 22px;
+  line-height: 1;
+}
+
+.plus-minus-btn:disabled {
+  padding: 8px 15px;
+  font-size: 22px;
+  line-height: 1;    
+  background-color: grey;
 }
