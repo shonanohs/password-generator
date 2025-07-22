@@ -26,7 +26,7 @@ A responsive, customisable password generator built with JavaScript, HTML, and C
 <img width="295.25" height="556.25" alt="20250722_125813000_iOS (1)" src="https://github.com/user-attachments/assets/ace58898-8f40-419c-a832-58db565d7475"/>
 
 ## 🔗 Links
-- Live Site URL: [[https://sneakers-25.netlify.app/](https://sneakers-2025.netlify.app/)](https://pwd-gnrtr.netlify.app/)
+- Live Site URL: https://pwd-gnrtr.netlify.app/
 
 ## 🛠️ Built With
 - HTML
